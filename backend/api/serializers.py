@@ -1,7 +1,7 @@
 from django.db.models import Count
 from rest_framework import serializers
 
-from .models import Country, Producer, Car, Comment
+from .models import Car, Comment, Country, Producer
 
 
 class CountrySerializer(serializers.ModelSerializer):
@@ -38,9 +38,6 @@ class ProducerDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producer
         fields = ["country", "country_name", "cars", "total_comments"]
-
-
-
 class CarDetailSerializer(serializers.ModelSerializer):
     total_comments = serializers.SerializerMethodField(read_only=True)
     producer_name = serializers.ReadOnlyField(source='producer.producer_name')
