@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from drf_excel.mixins import XLSXFileMixin
 from drf_excel.renderers import XLSXRenderer
 from .models import Country, Producer, Car, Comment
-from .serializers import CountrySerializer, CountryDetailSerializer, ProducerDetailSerializer, CarDetailSerializer, \
-    CommentSerializer
+from .serializers import (CountrySerializer, CountryDetailSerializer, ProducerDetailSerializer,
+                          CarDetailSerializer, CommentSerializer)
 
 from .utils import ApiMixin, CsvMixin
 
@@ -159,4 +159,3 @@ class CommentToXlsApiView(XLSXFileMixin, generics.ListAPIView):
 class CommentToCsvApiView(CsvMixin,APIView):
     def __init__(self):
         super().__init__(serializer=CommentSerializer, model=Comment)
-
